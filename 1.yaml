@@ -96,7 +96,7 @@ proxy-groups:
       - kuromi
   - name: Auto
     type: fallback
-    proxies:
+    use:
       - 🇭🇰 Hong Kong
       - 🇸🇬 Singapore
       - 🇯🇵 Japan
@@ -106,7 +106,7 @@ proxy-groups:
     interval: 300
   - name: Apple
     type: select
-    proxies:
+    use:
       - DIRECT
       - Kuromis
       - 🇭🇰 Hong Kong
@@ -116,12 +116,12 @@ proxy-groups:
       - 🇨🇳 Taiwan
   - name: BiliBili
     type: select
-    proxies:
+    use:
       - DIRECT
       - 🇨🇳 Taiwan
   - name: Disney
     type: select
-    proxies:
+    use:
       - Kuromis
       - 🇭🇰 Hong Kong
       - 🇸🇬 Singapore
@@ -130,7 +130,7 @@ proxy-groups:
       - 🇨🇳 Taiwan
   - name: Netflix
     type: select
-    proxies:
+    use:
       - Kuromis
       - 🇭🇰 Hong Kong
       - 🇸🇬 Singapore
@@ -139,7 +139,7 @@ proxy-groups:
       - 🇨🇳 Taiwan
   - name: PayPal
     type: select
-    proxies:
+    use:
       - DIRECT
       - Kuromis
       - 🇭🇰 Hong Kong
@@ -149,7 +149,7 @@ proxy-groups:
       - 🇨🇳 Taiwan
   - name: Steam
     type: select
-    proxies:
+    use:
       - DIRECT
       - Kuromis
       - 🇭🇰 Hong Kong
@@ -159,7 +159,7 @@ proxy-groups:
       - 🇨🇳 Taiwan
   - name: Google
     type: select
-    proxies:
+    use:
       - Kuromis
       - 🇭🇰 Hong Kong
       - 🇸🇬 Singapore
@@ -168,7 +168,7 @@ proxy-groups:
       - 🇨🇳 Taiwan
   - name: Microsoft
     type: select
-    proxies:
+    use:
       - DIRECT
       - Kuromis
       - 🇭🇰 Hong Kong
@@ -178,7 +178,7 @@ proxy-groups:
       - 🇨🇳 Taiwan
   - name: Telegram
     type: select
-    proxies:
+    use:
       - 🇭🇰 Hong Kong
       - 🇸🇬 Singapore
       - 🇯🇵 Japan
