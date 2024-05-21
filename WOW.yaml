@@ -1,0 +1,4 @@
+payload:
+  - DST-PORT,3724
+  - DOMAIN,telemetry-in.battle.net
+  - DOMAIN,prod.depot.battle.net
