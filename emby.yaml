@@ -1,7 +1,8 @@
 payload:
-  - DOMAIN,media.micu.hk #MICU
-  - DOMAIN,e.niceduck.me #卷毛鼠
-  - DOMAIN,cf.niceduck.lol #垃圾影业
-  - DOMAIN,bili.bili.rip #HXD   
-  - DOMAIN,emby2.misakaf.org #MisakaF
-  - DOMAIN,789.123456.al #TreeDiagram
+  - "media.micu.hk" #MICU
+  - "e.niceduck.me" #卷毛鼠
+  - "cf.niceduck.lol" #垃圾影业
+  - "bili.bili.rip" #HXD   
+  - "emby2.misakaf.org" #MisakaF 
+  - "789.123456.al" #TreeDiagram    
+
