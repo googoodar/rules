@@ -6,3 +6,6 @@ payload:
   - DOMAIN-SUFFIX,callofduty.com
   - DOMAIN-SUFFIX,demonware.net
   - DOMAIN-SUFFIX,activision.com
+  - DOMAIN,titlestorage.xboxlive.com 
+  - DOMAIN,userpresence.xboxlive.com 
+  - DOMAIN,achievements.xboxlive.com
