@@ -1,5 +1,8 @@
 
 payload:
   - DST-PORT,3074
-  - '+.callofduty.com'
-  - '+.demonware.net'    
+  - DST-PORT,25111
+  - DOMAIN-SUFFIX,xboxlive.com
+  - DOMAIN-SUFFIX,callofduty.com
+  - DOMAIN-SUFFIX,demonware.net
+  - DOMAIN-SUFFIX,activision.com
