@@ -1,5 +1,5 @@
 
 payload:
   - DST-PORT,3074
-  - DOMAIN,telemetry-in.battle.net
-  - DOMAIN,prod.depot.battle.net
+  - '+.callofduty.com'
+  - '+.demonware.net'    
