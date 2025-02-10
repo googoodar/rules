@@ -1,9 +1,20 @@
 
 payload:
   - DST-PORT,3074
-  - DST-PORT,25111
-  - DOMAIN-SUFFIX,xboxlive.com
-  - DOMAIN-SUFFIX,callofduty.com
-  - DOMAIN-SUFFIX,demonware.net
-  - DOMAIN-SUFFIX,activision.com
   - DOMAIN,collections.md.mp.microsoft.com
+  - DOMAIN,displaycatalog.mp.microsoft.com
+  - DOMAIN,ingest.datax.activision.com
+  - DOMAIN,prod.cdni.callofduty.com
+  - DOMAIN,rta.xboxlive.com
+  - DOMAIN,achievements.xboxlive.com
+  - DOMAIN,userstats.xboxlive.com
+  - DOMAIN,genesis.stun.us.demonware.net
+  - DOMAIN,cer-wingdk-loginservice.prod.demonware.net
+  - DOMAIN,telescope.callofduty.com
+  - DOMAIN,d1vwehpzunaxib.cloudfront.net
+  - DOMAIN,social.xboxlive.com
+  - DOMAIN,privacy.xboxlive.com 
+  - DOMAIN,multiplayeractivity.xboxlive.com
+  - DOMAIN,userpresence.xboxlive.com
+  
+  
