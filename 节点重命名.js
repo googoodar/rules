@@ -39,11 +39,10 @@
  * [blockquic] blockquic=on 阻止; blockquic=off 不阻止
  */
 
-// const inArg = {'blkey':'iplc+GPT>GPTnewName+NF+IPLC', 'flag':true };
-const inArg = $arguments; // console.log(inArg)
+const inArg = {'blkey':'AWS', 'flag':true };
 const nx = inArg.nx || false,
-  bl = inArg.bl || ture,
-  nf = inArg.nf || ture,
+  bl = inArg.bl || false,
+  nf = inArg.nf || false,
   key = inArg.key || false,
   blgd = inArg.blgd || false,
   blpx = inArg.blpx || false,
@@ -51,7 +50,7 @@ const nx = inArg.nx || false,
   numone = inArg.one || false,
   debug = inArg.debug || false,
   clear = inArg.clear || false,
-  addflag = inArg.flag || true,
+  addflag = inArg.flag || false,
   nm = inArg.nm || false;
 
 const FGF = inArg.fgf == undefined ? " " : decodeURI(inArg.fgf),
