@@ -1,10 +1,10 @@
 /**
  * @name Contextual Renamer by Flag (Keep Flag & TW->CN Flag & TUR Fix)
- * @description 根据节点名中的国旗符号，来精确地识别并替换对应的国家/地区缩写为中文。此版本会保留国旗，将台湾(TW)指向中国(CN)国旗，并为无国旗的'TUR'节点自动添加土耳其国旗并翻译。
- * @version 15.0 (TUR Special Handling)
+ * @description 根据节点名中的国旗符号，来精确地识别并替换对应的国家/地区缩写为中文。此版本会保留国旗，将台湾(TW)指向中国(CN)国旗，并能为无国旗的'TUR'节点自动添加土耳其国旗并翻译。
+ * @version 16.0 (Comprehensive Replace)
  * @update 2025-06-21
  * @author Gemini
- * @usage 在 Sub-Store 中使用。脚本会寻找节点名中的国旗，然后只替换与该国旗相关的英文缩写。节点名中必须包含国旗才能生效（TUR为特例）。
+ * @usage 在 Sub-Store 中使用。脚本会寻找节点名中的国旗，然后替换掉所有与该国旗相关的英文缩写（如 HKG, HK, SGP, SG 等）。
  */
 
 // --- 数据源 ---
@@ -47,7 +47,7 @@ for (const [zhName, enAliases] of Object.entries(aliasMap)) {
   }
 }
 
-// --- (v14) 特殊映射：处理台湾地区使用中国国旗的情况 ---
+// --- 特殊映射：处理台湾地区使用中国国旗的情况 ---
 const twFlag = '🇹🇼';
 const cnFlag = '🇨🇳';
 const twData = flagToDataMap.get(twFlag);
@@ -68,38 +68,37 @@ function operator(proxies) {
   return proxies.map(p => {
     let nodeName = p.name;
 
-    // --- (v15.0) 新增逻辑：为无国旗的 'TUR' 添加土耳其国旗并替换 ---
+    // --- (v15.0) 特殊逻辑：为无国旗的 'TUR' 添加土耳其国旗并替换 ---
     const trIndex = EN.indexOf('TR');
     if (trIndex !== -1) {
-        const trFlag = FG[trIndex];      // 🇹🇷
-        const zhTr = ZH[trIndex];        // 土耳其
-        const turRegex = /\bTUR\b/;      // 只匹配独立的、大写的 'TUR' 单词
+        const trFlag = FG[trIndex];
+        const zhTr = ZH[trIndex];
+        const turRegex = /\bTUR\b/;
 
-        // 当节点名包含 'TUR' 且不包含土耳其国旗时
         if (turRegex.test(nodeName) && !nodeName.includes(trFlag)) {
-            // 1. 在节点名最前面添加国旗，并用 'TUR' 换成中文
             nodeName = trFlag + ' ' + nodeName.replace(turRegex, zhTr);
         }
     }
     // --- 特殊处理结束 ---
 
-    // --- 原有主要逻辑 ---
+    // --- (v16.0) 主要逻辑：全面替换所有相关代码 ---
     for (const [flag, countryData] of flagToDataMap.entries()) {
       if (nodeName.includes(flag)) {
         const sortedCodes = Array.from(countryData.codes).sort((a, b) => b.length - a.length);
 
+        // 遍历所有相关代码并全部替换
         for (const code of sortedCodes) {
-          const regex = new RegExp('\\b' + code.replace(/[()]/g, '\\$&') + '(?![a-zA-Z])', 'i');
-          if (regex.test(nodeName)) {
-            nodeName = nodeName.replace(regex, countryData.zh);
-            break; // 替换第一个匹配到的代码后，跳出内层循环
-          }
+          // 使用全局/g标志来替换所有出现的匹配项
+          const regex = new RegExp('\\b' + code.replace(/[()]/g, '\\$&') + '\\b', 'gi');
+          nodeName = nodeName.replace(regex, countryData.zh);
         }
-        break; // 找到并处理第一个国旗后，跳出外层循环
+        
+        // 找到并处理完第一个国旗后，跳出循环，避免处理混合国旗的命名
+        break;
       }
     }
     
-    // 统一对最终的节点名进行格式化（合并多余空格并去除首尾空格）
+    // 统一对最终的节点名进行格式化
     p.name = nodeName.replace(/\s+/g, ' ').trim();
     return p;
   });
