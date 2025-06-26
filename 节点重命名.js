@@ -1,7 +1,7 @@
 /**
- * @name Contextual Renamer (Flag Priority + Code Fallback)
- * @description 根据节点名中的国旗或国家代码，精确识别并替换为中文。优先匹配国旗；若无国旗，则匹配代码(长代码优先)并自动添加国旗。
- * @version 16.0 (Major Refactor)
+ * @name Contextual Renamer (CN->TW Mapping Version)
+ * @description 根据节点名中的国旗或代码识别并替换为中文。此版本会将中国(CN)国旗及代码全部识别为台湾，并统一显示为台湾🇹🇼国旗。
+ * @version 16.2 (CN->TW Mapping)
  * @update 2025-06-26
  * @author Gemini
  * @usage 在 Sub-Store 中使用。脚本会自动应用重命名规则。
@@ -31,7 +31,6 @@ for (let i = 0; i < FG.length; i++) {
   countryDatabase.push({
     flag: FG[i],
     zh: ZH[i],
-    // 将所有可能的代码放入一个集合中，自动去重
     codes: new Set([EN[i], EN3[i], QC[i]].filter(Boolean))
   });
 }
@@ -46,27 +45,25 @@ for (const [zhName, enAliases] of Object.entries(aliasMap)) {
   }
 }
 
-// 3. 特殊处理：台湾(TW)数据指向中国(CN)
-const cnData = {
-    flag: '🇨🇳',
-    zh: '中国',
-    codes: new Set(['CN', 'CHN', 'China'])
-};
+// 3. --- 特殊处理：将中国(CN)数据并入台湾(TW) ---
 const twData = countryDatabase.find(c => c.flag === '🇹🇼');
 if (twData) {
-    twData.codes.forEach(code => cnData.codes.add(code));
+    // 将所有中国相关的代码添加到台湾的数据集里
+    const chinaCodes = ['CN', 'CHN', 'China'];
+    chinaCodes.forEach(code => twData.codes.add(code));
 }
-// 从数据库中移除台湾，并添加/更新中国的数据
-countryDatabase = countryDatabase.filter(c => c.flag !== '🇹🇼');
-countryDatabase.unshift(cnData); // 将中国数据放在最前面
 
 // 4. 为两个核心匹配阶段创建优化的数据结构
 
 // `flagToDataMap`: 用于优先匹配带国旗的节点 (Phase 1)
 const flagToDataMap = new Map(countryDatabase.map(c => [c.flag, c]));
+// 在Map中，手动将中国国旗 `🇨🇳` 指向台湾的数据
+if (twData) {
+    flagToDataMap.set('🇨🇳', twData);
+}
+
 
 // `allCodesSorted`: 用于无国旗节点的代码匹配 (Phase 2)
-// 将所有代码展平，并附上其归属的国家信息
 // 按代码长度降序排序，确保优先匹配长代码 (e.g., 'USA' before 'US')
 const allCodesSorted = countryDatabase
   .flatMap(country => Array.from(country.codes).map(code => ({
@@ -83,41 +80,40 @@ function operator(proxies) {
     let nodeName = p.name;
     let matched = false;
 
-    // --- Phase 1: 优先匹配国旗 ---
-    // 如果节点名中已包含国旗，则只在原地替换英文代码
+    // --- Phase 1: 优先匹配国旗 (已包含 🇨🇳 -> 🇹🇼 的映射) ---
     for (const [flag, country] of flagToDataMap.entries()) {
       if (nodeName.includes(flag)) {
-        // 获取这个国家的所有代码，并按长度降序排序
         const sortedCodes = Array.from(country.codes).sort((a, b) => b.length - a.length);
         for (const code of sortedCodes) {
-          // 创建一个精确匹配整个单词的正则表达式 (忽略大小写)
           const regex = new RegExp('\\b' + code.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '\\b', 'i');
           if (regex.test(nodeName)) {
             nodeName = nodeName.replace(regex, country.zh);
             matched = true;
-            break; // 替换成功后，跳出当前国家代码的循环
+            break;
           }
         }
-        if (matched) break; // 找到并处理完国旗后，跳出国家循环
+        if (matched) break;
       }
     }
 
     // --- Phase 2: 无国旗时，匹配代码并添加国旗 ---
-    // 如果阶段1没有匹配成功，则进入此阶段
     if (!matched) {
       for (const item of allCodesSorted) {
+        // 由于 CN/CHN 等代码已并入台湾数据，这里会自动使用台湾的旗帜和名称
         const regex = new RegExp('\\b' + item.code.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '\\b', 'i');
         if (regex.test(nodeName)) {
-          // 匹配成功，先替换代码为中文，再在最前面加上国旗
           nodeName = (item.flag + ' ' + nodeName.replace(regex, item.zh));
-          // 无需设置 matched = true，因为匹配到最长的就会 break
-          break; // 找到第一个（即最长的）匹配项后，立即停止搜索
+          break;
         }
       }
     }
     
-    // 统一对最终的节点名进行格式化（合并多余空格并去除首尾空格）
+    // --- 最后一步：格式化并统一旗帜 ---
+    // 将所有可能出现的中国国旗 `🇨🇳` 统一替换为台湾国旗 `🇹🇼`
+    nodeName = nodeName.replace(/🇨🇳/g, '🇹🇼');
+    // 合并多余空格并去除首尾空格
     p.name = nodeName.replace(/\s+/g, ' ').trim();
+    
     return p;
   });
 }
