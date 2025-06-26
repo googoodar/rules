@@ -1,10 +1,10 @@
 /**
- * @name Contextual Renamer by Flag (Keep Flag & TW->CN Flag & TUR Fix)
- * @description 根据节点名中的国旗符号，来精确地识别并替换对应的国家/地区缩写为中文。此版本会保留国旗，将台湾(TW)指向中国(CN)国旗，并为无国旗的'TUR'节点自动添加土耳其国旗并翻译。
- * @version 15.0 (TUR Special Handling)
- * @update 2025-06-21
+ * @name Contextual Renamer (Flag Priority + Code Fallback)
+ * @description 根据节点名中的国旗或国家代码，精确识别并替换为中文。优先匹配国旗；若无国旗，则匹配代码(长代码优先)并自动添加国旗。
+ * @version 16.0 (Major Refactor)
+ * @update 2025-06-26
  * @author Gemini
- * @usage 在 Sub-Store 中使用。脚本会寻找节点名中的国旗，然后只替换与该国旗相关的英文缩写。节点名中必须包含国旗才能生效（TUR为特例）。
+ * @usage 在 Sub-Store 中使用。脚本会自动应用重命名规则。
  */
 
 // --- 数据源 ---
@@ -23,79 +23,96 @@ const aliasMap = {
   '意大利': ['Italia'], '德国': ['Deutschland'], '西班牙': ['España']
 };
 
-// --- 预处理，构建一个以国旗为索引的数据库 ---
-const flagToDataMap = new Map();
-const zhToIndex = new Map(ZH.map((name, index) => [name, index]));
+// --- 预处理，构建高效的数据库 ---
 
+// 1. 创建一个统一的、包含所有国家/地区信息的数据库
+let countryDatabase = [];
 for (let i = 0; i < FG.length; i++) {
-  const flag = FG[i];
-  const zhName = ZH[i];
-  const codes = [EN[i], EN3[i], QC[i]].filter(Boolean);
-  flagToDataMap.set(flag, { zh: zhName, codes: new Set(codes) });
+  countryDatabase.push({
+    flag: FG[i],
+    zh: ZH[i],
+    // 将所有可能的代码放入一个集合中，自动去重
+    codes: new Set([EN[i], EN3[i], QC[i]].filter(Boolean))
+  });
 }
 
+// 2. 将别名添加到数据库中
 for (const [zhName, enAliases] of Object.entries(aliasMap)) {
-  const index = zhToIndex.get(zhName);
-  if (index !== undefined) {
-    const flag = FG[index];
-    const countryData = flagToDataMap.get(flag);
-    if (countryData) {
-      for (const alias of enAliases) {
-        countryData.codes.add(alias);
-      }
+  const country = countryDatabase.find(c => c.zh === zhName);
+  if (country) {
+    for (const alias of enAliases) {
+      country.codes.add(alias);
     }
   }
 }
 
-// --- (v14) 特殊映射：处理台湾地区使用中国国旗的情况 ---
-const twFlag = '🇹🇼';
-const cnFlag = '🇨🇳';
-const twData = flagToDataMap.get(twFlag);
-
+// 3. 特殊处理：台湾(TW)数据指向中国(CN)
+const cnData = {
+    flag: '🇨🇳',
+    zh: '中国',
+    codes: new Set(['CN', 'CHN', 'China'])
+};
+const twData = countryDatabase.find(c => c.flag === '🇹🇼');
 if (twData) {
-  let cnData = flagToDataMap.get(cnFlag);
-  if (cnData) {
     twData.codes.forEach(code => cnData.codes.add(code));
-  } else {
-    flagToDataMap.set(cnFlag, twData);
-  }
-  flagToDataMap.delete(twFlag);
 }
-// --- 特殊映射结束 ---
+// 从数据库中移除台湾，并添加/更新中国的数据
+countryDatabase = countryDatabase.filter(c => c.flag !== '🇹🇼');
+countryDatabase.unshift(cnData); // 将中国数据放在最前面
+
+// 4. 为两个核心匹配阶段创建优化的数据结构
+
+// `flagToDataMap`: 用于优先匹配带国旗的节点 (Phase 1)
+const flagToDataMap = new Map(countryDatabase.map(c => [c.flag, c]));
+
+// `allCodesSorted`: 用于无国旗节点的代码匹配 (Phase 2)
+// 将所有代码展平，并附上其归属的国家信息
+// 按代码长度降序排序，确保优先匹配长代码 (e.g., 'USA' before 'US')
+const allCodesSorted = countryDatabase
+  .flatMap(country => Array.from(country.codes).map(code => ({
+      code: code,
+      flag: country.flag,
+      zh: country.zh
+  })))
+  .sort((a, b) => b.code.length - a.code.length);
+
 
 // --- 主操作函数 ---
 function operator(proxies) {
   return proxies.map(p => {
     let nodeName = p.name;
+    let matched = false;
 
-    // --- (v15.0) 新增逻辑：为无国旗的 'TUR' 添加土耳其国旗并替换 ---
-    const trIndex = EN.indexOf('TR');
-    if (trIndex !== -1) {
-        const trFlag = FG[trIndex];      // 🇹🇷
-        const zhTr = ZH[trIndex];        // 土耳其
-        const turRegex = /\bTUR\b/;      // 只匹配独立的、大写的 'TUR' 单词
-
-        // 当节点名包含 'TUR' 且不包含土耳其国旗时
-        if (turRegex.test(nodeName) && !nodeName.includes(trFlag)) {
-            // 1. 在节点名最前面添加国旗，并用 'TUR' 换成中文
-            nodeName = trFlag + ' ' + nodeName.replace(turRegex, zhTr);
-        }
-    }
-    // --- 特殊处理结束 ---
-
-    // --- 原有主要逻辑 ---
-    for (const [flag, countryData] of flagToDataMap.entries()) {
+    // --- Phase 1: 优先匹配国旗 ---
+    // 如果节点名中已包含国旗，则只在原地替换英文代码
+    for (const [flag, country] of flagToDataMap.entries()) {
       if (nodeName.includes(flag)) {
-        const sortedCodes = Array.from(countryData.codes).sort((a, b) => b.length - a.length);
-
+        // 获取这个国家的所有代码，并按长度降序排序
+        const sortedCodes = Array.from(country.codes).sort((a, b) => b.length - a.length);
         for (const code of sortedCodes) {
-          const regex = new RegExp('\\b' + code.replace(/[()]/g, '\\$&') + '(?![a-zA-Z])', 'i');
+          // 创建一个精确匹配整个单词的正则表达式 (忽略大小写)
+          const regex = new RegExp('\\b' + code.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '\\b', 'i');
           if (regex.test(nodeName)) {
-            nodeName = nodeName.replace(regex, countryData.zh);
-            break; // 替换第一个匹配到的代码后，跳出内层循环
+            nodeName = nodeName.replace(regex, country.zh);
+            matched = true;
+            break; // 替换成功后，跳出当前国家代码的循环
           }
         }
-        break; // 找到并处理第一个国旗后，跳出外层循环
+        if (matched) break; // 找到并处理完国旗后，跳出国家循环
+      }
+    }
+
+    // --- Phase 2: 无国旗时，匹配代码并添加国旗 ---
+    // 如果阶段1没有匹配成功，则进入此阶段
+    if (!matched) {
+      for (const item of allCodesSorted) {
+        const regex = new RegExp('\\b' + item.code.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '\\b', 'i');
+        if (regex.test(nodeName)) {
+          // 匹配成功，先替换代码为中文，再在最前面加上国旗
+          nodeName = (item.flag + ' ' + nodeName.replace(regex, item.zh));
+          // 无需设置 matched = true，因为匹配到最长的就会 break
+          break; // 找到第一个（即最长的）匹配项后，立即停止搜索
+        }
       }
     }
     
@@ -103,4 +120,4 @@ function operator(proxies) {
     p.name = nodeName.replace(/\s+/g, ' ').trim();
     return p;
   });
-} 
+}
