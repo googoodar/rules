@@ -3,7 +3,9 @@
 #substore
 #  - +.mysub.store
 #emby
-  - +.223789.xyz #喜鹊       
+  - +.223789.xyz #喜鹊   
+  - cdn.lilyemby.my #lily
+  - tx.lilyemby.my #lily  
 #入口
   - +.nod3.org #守候
   - +.ojbktv.com #tkv
@@ -17,5 +19,5 @@
   - +.liangxin1.xyz #良心云
   - +.868103.xyz #viking
   - +.5645611.xyz #viking
-  - cdn.lilyemby.my #lily
-  - tx.lilyemby.my #lily
+  - +.myqcloud.com #linkcube
+  - +.linkcubecloud.com #linkcube
