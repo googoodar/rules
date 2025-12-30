@@ -4,9 +4,17 @@
 #  - +.mysub.store
 #emby
   - +.223789.xyz #喜鹊   
-  - cdn.lilyemby.my #lily
-  - tx.lilyemby.my #lily  
-  - o.204cloud.com:443 #omega 
+  - cdn.lilyemby.my #lilyCDN直连线路
+  - tx.lilyemby.my #lily腾讯CDN线路  
+  - aliyun.lilyemby.my #lily阿里CDN线路    
+  - o.204cloud.com #omega 
+  - cdn.fufuemby.top #芙服CF优选三网直连
+  - telecom.fufuemby.top #芙服运营商优选CDN 电信
+  - ptcn2.5203166.xyz #芙服电信CN线路『仅CN』
+  - lax4837.5203166.xyz #芙服美西4837 线路『仅CN』
+  - violetcdn.fufuemby.top #紫罗兰cdn直连  
+  - cmcdn.fufuemby.top #紫罗兰电信cdn 
+
 #入口
   - +.nod3.org #守候
   - +.ojbktv.com #tkv
