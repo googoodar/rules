@@ -6,6 +6,8 @@ payload:
   - +.newneeship.com #viking
   - +.mobaiemby.site #墨云阁
   - www.lilyemby.com #lily
+  - tx.lilyemby.com #lily腾讯CDN线路  
+  - aliyun.lilyemby.com #lily阿里CDN线路     
   - video.easyemby.com #enet
   - fufuvip.violet.run #芙服主路线
   - emby.hohai.eu.org #HOHAI
