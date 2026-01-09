@@ -4,9 +4,7 @@
 #  - +.mysub.store
 #emby
   - +.223789.xyz #喜鹊   
-  - cdn.lilyemby.my #lilyCDN直连线路
-  - tx.lilyemby.my #lily腾讯CDN线路  
-  - aliyun.lilyemby.my #lily阿里CDN线路    
+  - cdn.lilyemby.com #lilyCDN直连线路 
   - o.204cloud.com #omega 
   - cdn.fufuemby.top #芙服CF优选三网直连
   - telecom.fufuemby.top #芙服运营商优选CDN 电信
