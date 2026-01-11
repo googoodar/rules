@@ -1,26 +1,70 @@
-#emby
-DOMAIN-SUFFIX,223789.xyz #喜鹊
-DOMAIN,cdn.lilyemby.com #lilyCDN直连线路
-DOMAIN,o.204cloud.com #omega
-DOMAIN,cdn.fufuemby.top #芙服CF优选三网直连
-DOMAIN,telecom.fufuemby.top #芙服运营商优选CDN 电信
-DOMAIN,ptcn2.5203166.xyz #芙服电信CN线路『仅CN』
-DOMAIN,lax4837.5203166.xyz #芙服美西4837 线路『仅CN』
-DOMAIN,violetcdn.fufuemby.top #紫罗兰cdn直连
-DOMAIN,cmcdn.fufuemby.top #紫罗兰电信cdn
+# ==================
+# Emby 规则组
+# ==================
 
-#入口
-DOMAIN-SUFFIX,nod3.org #守候
-DOMAIN-SUFFIX,ojbktv.com #tkv
-DOMAIN-SUFFIX,911-gt3-rs.com #mesl
-DOMAIN-SUFFIX,yuyan.vin #雨燕云
-DOMAIN-SUFFIX,mtls.xyz #linkeless
-DOMAIN-SUFFIX,qfvwql.sbs #imm
-DOMAIN-SUFFIX,cxwmyp.sbs #imm
+# 喜鹊
+DOMAIN-SUFFIX,223789.xyz
+
+# lilyCDN直连线路
+DOMAIN,cdn.lilyemby.com
+
+# omega
+DOMAIN,o.204cloud.com
+
+# 芙服CF优选三网直连
+DOMAIN,cdn.fufuemby.top
+
+# 芙服运营商优选CDN 电信
+DOMAIN,telecom.fufuemby.top
+
+# 芙服电信CN线路『仅CN』
+DOMAIN,ptcn2.5203166.xyz
+
+# 芙服美西4837 线路『仅CN』
+DOMAIN,lax4837.5203166.xyz
+
+# 紫罗兰cdn直连
+DOMAIN,violetcdn.fufuemby.top
+
+# 紫罗兰电信cdn
+DOMAIN,cmcdn.fufuemby.top
+
+
+# ==================
+# 入口 / 机场域名
+# ==================
+
+# 守候
+DOMAIN-SUFFIX,nod3.org
+
+# tkv
+DOMAIN-SUFFIX,ojbktv.com
+
+# mesl
+DOMAIN-SUFFIX,911-gt3-rs.com
+
+# 雨燕云
+DOMAIN-SUFFIX,yuyan.vin
+
+# linkeless
+DOMAIN-SUFFIX,mtls.xyz
+
+# imm
+DOMAIN-SUFFIX,qfvwql.sbs
+DOMAIN-SUFFIX,cxwmyp.sbs
+
 DOMAIN-SUFFIX,ctcxianyu.com
-DOMAIN-SUFFIX,h5dg9l1jwpczvs91dekk.pw #ouo
-DOMAIN-SUFFIX,liangxin1.xyz #良心云
-DOMAIN-SUFFIX,868103.xyz #viking
-DOMAIN-SUFFIX,5645611.xyz #viking
-DOMAIN-SUFFIX,myqcloud.com #linkcube
-DOMAIN-SUFFIX,linkcubecloud.com #linkcube
+
+# ouo
+DOMAIN-SUFFIX,h5dg9l1jwpczvs91dekk.pw
+
+# 良心云
+DOMAIN-SUFFIX,liangxin1.xyz
+
+# viking
+DOMAIN-SUFFIX,868103.xyz
+DOMAIN-SUFFIX,5645611.xyz
+
+# linkcube
+DOMAIN-SUFFIX,myqcloud.com
+DOMAIN-SUFFIX,linkcubecloud.com
