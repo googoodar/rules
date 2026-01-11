@@ -5,6 +5,5 @@ DOMAIN-SUFFIX,javdb.com
 
 # Wowhead
 DOMAIN-SUFFIX,wowhead.com
-
-# Wowhead图片CDN
 DOMAIN-SUFFIX,zamimg.com
+
