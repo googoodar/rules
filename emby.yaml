@@ -1,15 +1,15 @@
-payload:
-  - +.pilipiliultra.com #pilipili
-  - +.023168.xyz #喜鹊
-  - +.micu.hk #MICU
-  - +.lite.cn2gias.uk #守候公益
-  - +.newneeship.com #viking
-  - +.mobaiemby.site #墨云阁
-  - www.lilyemby.com #lily
-  - tx.lilyemby.com #lily腾讯CDN线路  
-  - aliyun.lilyemby.com #lily阿里CDN线路     
-  - video.easyemby.com #enet
-  - fufuvip.violet.run #芙服主路线
-  - emby.hohai.eu.org #HOHAI
-  - public.shrekmedia.org #Shrek
-  - emby.violet.run #紫罗兰
+DOMAIN-SUFFIX,pilipiliultra.com #pilipili
+DOMAIN-SUFFIX,023168.xyz #喜鹊
+DOMAIN-SUFFIX,micu.hk #MICU
+DOMAIN-SUFFIX,lite.cn2gias.uk #守候公益
+DOMAIN-SUFFIX,newneeship.com #viking
+DOMAIN-SUFFIX,mobaiemby.site #墨云阁
+
+DOMAIN,www.lilyemby.com #lily
+DOMAIN,tx.lilyemby.com #lily腾讯CDN线路
+DOMAIN,aliyun.lilyemby.com #lily阿里CDN线路
+DOMAIN,video.easyemby.com #enet
+DOMAIN,fufuvip.violet.run #芙服主路线
+DOMAIN,emby.hohai.eu.org #HOHAI
+DOMAIN,public.shrekmedia.org #Shrek
+DOMAIN,emby.violet.run #紫罗兰
