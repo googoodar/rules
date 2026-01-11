@@ -1,30 +1,26 @@
-  payload:
-  - +.newbeebox.com  #新手盒子 
-#substore
-#  - +.mysub.store
 #emby
-  - +.223789.xyz #喜鹊   
-  - cdn.lilyemby.com #lilyCDN直连线路 
-  - o.204cloud.com #omega 
-  - cdn.fufuemby.top #芙服CF优选三网直连
-  - telecom.fufuemby.top #芙服运营商优选CDN 电信
-  - ptcn2.5203166.xyz #芙服电信CN线路『仅CN』
-  - lax4837.5203166.xyz #芙服美西4837 线路『仅CN』
-  - violetcdn.fufuemby.top #紫罗兰cdn直连  
-  - cmcdn.fufuemby.top #紫罗兰电信cdn 
+DOMAIN-SUFFIX,223789.xyz #喜鹊
+DOMAIN,cdn.lilyemby.com #lilyCDN直连线路
+DOMAIN,o.204cloud.com #omega
+DOMAIN,cdn.fufuemby.top #芙服CF优选三网直连
+DOMAIN,telecom.fufuemby.top #芙服运营商优选CDN 电信
+DOMAIN,ptcn2.5203166.xyz #芙服电信CN线路『仅CN』
+DOMAIN,lax4837.5203166.xyz #芙服美西4837 线路『仅CN』
+DOMAIN,violetcdn.fufuemby.top #紫罗兰cdn直连
+DOMAIN,cmcdn.fufuemby.top #紫罗兰电信cdn
 
 #入口
-  - +.nod3.org #守候
-  - +.ojbktv.com #tkv
-  - +.911-gt3-rs.com #mesl
-  - +.yuyan.vin #雨燕云
-  - +.mtls.xyz #linkeless
-  - +.qfvwql.sbs #imm
-  - +.cxwmyp.sbs #imm
-  - +.ctcxianyu.com
-  - +.h5dg9l1jwpczvs91dekk.pw  #ouo
-  - +.liangxin1.xyz #良心云
-  - +.868103.xyz #viking
-  - +.5645611.xyz #viking
-  - +.myqcloud.com #linkcube
-  - +.linkcubecloud.com #linkcube
+DOMAIN-SUFFIX,nod3.org #守候
+DOMAIN-SUFFIX,ojbktv.com #tkv
+DOMAIN-SUFFIX,911-gt3-rs.com #mesl
+DOMAIN-SUFFIX,yuyan.vin #雨燕云
+DOMAIN-SUFFIX,mtls.xyz #linkeless
+DOMAIN-SUFFIX,qfvwql.sbs #imm
+DOMAIN-SUFFIX,cxwmyp.sbs #imm
+DOMAIN-SUFFIX,ctcxianyu.com
+DOMAIN-SUFFIX,h5dg9l1jwpczvs91dekk.pw #ouo
+DOMAIN-SUFFIX,liangxin1.xyz #良心云
+DOMAIN-SUFFIX,868103.xyz #viking
+DOMAIN-SUFFIX,5645611.xyz #viking
+DOMAIN-SUFFIX,myqcloud.com #linkcube
+DOMAIN-SUFFIX,linkcubecloud.com #linkcube
