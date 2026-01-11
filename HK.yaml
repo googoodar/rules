@@ -1,8 +1,5 @@
-
-payload:
-  - +.fengyunjiaoyu.xyz #JAVDB
-  - +.jdbstatic.com #JAVDB
-  - +.javdb.com #JAVDB
-  - +.wowhead.com 
-#  - +.mysub.store #SubStore
-  
+DOMAIN-SUFFIX,fengyunjiaoyu.xyz #JAVDB
+DOMAIN-SUFFIX,jdbstatic.com #JAVDB
+DOMAIN-SUFFIX,javdb.com #JAVDB
+DOMAIN-SUFFIX,wowhead.com #Wowhead
+DOMAIN-SUFFIX,zamimg.com #Wowhead图片CDN
