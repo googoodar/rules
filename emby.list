@@ -1,15 +1,41 @@
-DOMAIN-SUFFIX,pilipiliultra.com #pilipili
-DOMAIN-SUFFIX,023168.xyz #喜鹊
-DOMAIN-SUFFIX,micu.hk #MICU
-DOMAIN-SUFFIX,lite.cn2gias.uk #守候公益
-DOMAIN-SUFFIX,newneeship.com #viking
-DOMAIN-SUFFIX,mobaiemby.site #墨云阁
+# pilipili
+DOMAIN-SUFFIX,pilipiliultra.com
 
-DOMAIN,www.lilyemby.com #lily
-DOMAIN,tx.lilyemby.com #lily腾讯CDN线路
-DOMAIN,aliyun.lilyemby.com #lily阿里CDN线路
-DOMAIN,video.easyemby.com #enet
-DOMAIN,fufuvip.violet.run #芙服主路线
-DOMAIN,emby.hohai.eu.org #HOHAI
-DOMAIN,public.shrekmedia.org #Shrek
-DOMAIN,emby.violet.run #紫罗兰
+# 喜鹊
+DOMAIN-SUFFIX,023168.xyz
+
+# MICU
+DOMAIN-SUFFIX,micu.hk
+
+# 守候公益
+DOMAIN-SUFFIX,lite.cn2gias.uk
+
+# viking
+DOMAIN-SUFFIX,newneeship.com
+
+# 墨云阁
+DOMAIN-SUFFIX,mobaiemby.site
+
+# lily
+DOMAIN,www.lilyemby.com
+
+# lily腾讯CDN线路
+DOMAIN,tx.lilyemby.com
+
+# lily阿里CDN线路
+DOMAIN,aliyun.lilyemby.com
+
+# enet
+DOMAIN,video.easyemby.com
+
+# 芙服主路线
+DOMAIN,fufuvip.violet.run
+
+# HOHAI
+DOMAIN,emby.hohai.eu.org
+
+# Shrek
+DOMAIN,public.shrekmedia.org
+
+# 紫罗兰
+DOMAIN,emby.violet.run
