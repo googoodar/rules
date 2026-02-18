@@ -45,3 +45,9 @@ DOMAIN,random.ouonet.org
 
 #rec
 DOMAIN,vision.recmata.net
+
+#okemby
+DOMAIN-SUFFIX,okemby.org
+
+#nyaemby
+DOMAIN-SUFFIX,bangumi.ca
