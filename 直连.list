@@ -5,31 +5,6 @@
 # 喜鹊
 DOMAIN-SUFFIX,223789.xyz
 
-# lilyCDN直连线路
-DOMAIN,cdn.lilyemby.com
-
-# omega
-DOMAIN,o.204cloud.com
-
-# 芙服CF优选三网直连
-DOMAIN,cdn.fufuemby.top
-
-# 芙服运营商优选CDN 电信
-DOMAIN,telecom.fufuemby.top
-
-# 芙服电信CN线路『仅CN』
-DOMAIN,ptcn2.5203166.xyz
-
-# 芙服美西4837 线路『仅CN』
-DOMAIN,lax4837.5203166.xyz
-
-# 紫罗兰cdn直连
-DOMAIN,violetcdn.fufuemby.top
-
-# 紫罗兰电信cdn
-DOMAIN,cmcdn.fufuemby.top
-
-
 # ==================
 # 入口 / 机场域名
 # ==================
