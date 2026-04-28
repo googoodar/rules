@@ -1,50 +1,23 @@
-# pilipili
-DOMAIN-SUFFIX,pilipiliultra.com
-
 # 喜鹊
 DOMAIN-SUFFIX,023168.xyz
 
-# MICU
-DOMAIN-SUFFIX,micu.hk
+#youno
+DOMAIN,plus.younoyes.com
 
-# 守候公益
+# 守候
 DOMAIN-SUFFIX,cn2gias.uk
-
-# viking
-DOMAIN-SUFFIX,newneeship.com
 
 # 墨云阁
 DOMAIN-SUFFIX,mobaiemby.site
 
 # lily
-DOMAIN,www.lilyemby.com
-
-# lily腾讯CDN线路
-DOMAIN,tx.lilyemby.com
-
-# lily阿里CDN线路
-DOMAIN,aliyun.lilyemby.com
+DOMAIN-SUFFIX,lilyemby.com
 
 # enet
 DOMAIN,video.easyemby.com
 
-# 芙服主路线
-DOMAIN,fufuvip.violet.run
-
 # HOHAI
 DOMAIN,emby.hohai.eu.org
-
-# Shrek
-DOMAIN,public.shrekmedia.org
-
-# 紫罗兰
-DOMAIN,emby.violet.run
-
-#ouo
-DOMAIN,random.ouonet.org
-
-#rec
-DOMAIN,vision.recmata.net
 
 #okemby
 DOMAIN-SUFFIX,okemby.org
@@ -52,9 +25,14 @@ DOMAIN-SUFFIX,okemby.org
 #nyaemby
 DOMAIN-SUFFIX,bangumi.ca
 
-#guai哥哥
-DOMAIN-SUFFIX,83787.de:443
+# pilipili
+DOMAIN-SUFFIX,pilipiliultra.com
 
-#youno
-DOMAIN,plus.younoyes.com
+# viking
+DOMAIN-SUFFIX,newneeship.com
+
+# Shrek
+DOMAIN,public.shrekmedia.org
+
+
 
