@@ -2,6 +2,9 @@
 # Emby 规则组
 # ==================
 
+#反代
+- DOMAIN,ct.emby-rp.ccwu.cc
+
 # 喜鹊
 DOMAIN-SUFFIX,223789.xyz
 
