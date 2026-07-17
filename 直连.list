@@ -19,34 +19,22 @@ DOMAIN-SUFFIX,888053.xyz
 # 入口 / 机场域名
 # ==================
 
-# 守候
-DOMAIN-SUFFIX,nod3.org
-DOMAIN-SUFFIX,sntp.me
-
-# tkv
-DOMAIN-SUFFIX,ojbktv.com
-
 # mesl
+DOMAIN-SUFFIX,mesl.cloud
 DOMAIN-SUFFIX,911-gt3-rs.com
-
-# 雨燕云
-DOMAIN-SUFFIX,yuyan.vin
 
 # 良心云
 DOMAIN-SUFFIX,liangxin1.xyz
 
-# linkcube
-DOMAIN-SUFFIX,myqcloud.com
-DOMAIN-SUFFIX,linkcubecloud.com
-DOMAIN-SUFFIX,linkcube.dev
-DOMAIN-SUFFIX,api-linkcube.org
+# 吹雪云
+DOMAIN-SUFFIX,blowingsnowclouds.cc
 
 #花云
-DOMAIN-SUFFIX,api-huacloud.net
 DOMAIN-SUFFIX,api-huacloud.com
-DOMAIN-SUFFIX,233netcloud.com
-DOMAIN-SUFFIX,apt-hcloud.net
+DOMAIN-SUFFIX,aws-agent.net
 
+# BWG
+DOMAIN-SUFFIX,deishidei.me
 
 DOMAIN-SUFFIX,cdn.12ai.org
 DOMAIN-SUFFIX,7511111.xyz
