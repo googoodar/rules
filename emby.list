@@ -22,28 +22,10 @@ DOMAIN,video.easyemby.com
 # HOHAI
 DOMAIN,emby.hohai.eu.org
 
-#okemby
-DOMAIN-SUFFIX,okemby.org
-
 #nyaemby
 DOMAIN-SUFFIX,bangumi.ca
 
-# pilipili
-DOMAIN-SUFFIX,pilipiliultra.com
 
-# viking
-DOMAIN-SUFFIX,newneeship.com
-
-# Shrek
-DOMAIN,public.shrekmedia.org
-
-# 终点站
-DOMAIN,v1.zdz.plus
-DOMAIN,2026234.xyz
-DOMAIN,2026345.xyz
-DOMAIN,2026456.xyz
-DOMAIN,2026567.xyz
-DOMAIN,2026678.xyz
 
 
 
