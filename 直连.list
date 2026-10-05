@@ -15,6 +15,14 @@ DOMAIN-SUFFIX,nginxlily.cyou
 DOMAIN-SUFFIX,array2026.com
 DOMAIN-SUFFIX,888053.xyz
 
+# Youno 直连线路
+DOMAIN,plusjp1.younoyes.com
+DOMAIN,plusde1.younoyes.com
+DOMAIN,plusus1.younoyes.com
+DOMAIN,plusus2.younoyes.com
+DOMAIN,plusus3.younoyes.com
+DOMAIN,plushk1.younoyes.com
+
 # ==================
 # 入口 / 机场域名
 # ==================
