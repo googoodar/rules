@@ -11,11 +11,7 @@ DOMAIN-SUFFIX,223789.xyz
 #lily
 DOMAIN-SUFFIX,nginxlily.cyou
 
-#守候emby
-DOMAIN-SUFFIX,array2026.com
-DOMAIN-SUFFIX,888053.xyz
-
-# Youno 直连线路
+# Youno
 DOMAIN,plusjp1.younoyes.com
 DOMAIN,plusde1.younoyes.com
 DOMAIN,plusus1.younoyes.com
